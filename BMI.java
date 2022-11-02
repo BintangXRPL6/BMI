@@ -1,0 +1,58 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package tugasdarurat;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author moklet
+ */
+public class BMI extends menghitungbmi {
+
+    public static void main(String[] args) {
+        BMI a = new BMI();
+        a.tampil();
+    }
+
+    private float hasil = 0, tinggi, berat;
+    public float GetHasil(){return hasil;}
+    
+    public void bmi(float tinggi, float berat)
+    {
+        float total;
+        float a = tinggi/100;
+        total = berat/(a*a);
+        hasil = total;
+    }
+    
+    public void tampil() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Mengitung BMI");
+        System.out.print("Masukan Tinggi badan(cm)");
+        tinggi = input.nextFloat();
+        System.out.print("Masukan Berat badan(Kg)");
+        berat = input.nextFloat();
+        bmi(tinggi, berat);
+        hasil = GetHasil();
+
+        if (hasil <=0) {
+            System.out.println("System tidak bisa menghitung negatif");
+        }
+        else if (hasil < 18.5) {
+            System.out.println("BMI kamu adalah " + hasil + "\n Hasil adalah BERAT BADAN DIBAWAH NORMAL");
+        } else if (hasil < 25) {
+            System.out.println("BMI kamu adalah " + hasil + "\n Hasil adalah BERAT BADAN NORMAL");
+
+        } else if (hasil < 30) {
+            System.out.println("BMI kamu adalah " + hasil + "\n Hasil adalah BERAT BADAN BERLEBIH");
+
+        } else if (hasil > 30) {
+            System.out.println("BMI kamu adalah " + hasil + "\n Hasil adalah OBESITAS");
+        }
+
+    }
+}
